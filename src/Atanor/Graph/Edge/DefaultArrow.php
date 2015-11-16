@@ -23,7 +23,7 @@ class DefaultArrow extends DefaultEdge implements Arrow
     /**
      * @inheritdoc
      */
-    public function swap()
+    public function swap():Arrow
     {
         $temp = $this->ends[0];
         $this->ends[0] = $this->ends[1];

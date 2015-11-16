@@ -45,6 +45,7 @@ class DefaultEdge implements Edge, MutableEdge
     public function setEnds(&$node1,&$node2):MutableEdge
     {
         $this->ends = \SplFixedArray::fromArray([$node1,$node2]);
+        return $this;
     }
 
     /**

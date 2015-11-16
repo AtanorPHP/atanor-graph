@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace Atanor\Graph\Graph;
 
 use Atanor\Graph\Edge\Edge;
@@ -46,11 +47,9 @@ abstract class AbstractGraph implements Graph
     }
 
     /**
-     * Remove node using its id
-     * @param string $nodeId
-     * @return $this
+     * @inheritdoc
      */
-    public function removeNodeById($nodeId)
+    public function removeNodeById($nodeId):Graph
     {
         $node = $this->getNode($nodeId);
         if ( ! $node) return $this;
@@ -62,22 +61,21 @@ abstract class AbstractGraph implements Graph
     }
 
     /**
-     * Remove node
-     * @param mixed $removedNode
-     * @return $this
+     * @inheritdoc
      */
-    public function removeNode($removedNode)
+    public function removeNode($removedNode):Graph
     {
         $nodeId = $this->getNodeId($removedNode);
-        $this->removeNodeById($nodeId);
+        return $this->removeNodeById($nodeId);
     }
 
     /**
      * Delete edge
      * @param $deletedEdge
-     * @return $this
+     * @return Graph
      */
-    protected function deleteEdge(Edge $deletedEdge) {
+    protected function deleteEdge(Edge $deletedEdge):Graph
+    {
         foreach ($this->edges as &$edge) {
             if ($edge === $deletedEdge) unset($edge);
         }
@@ -113,16 +111,15 @@ abstract class AbstractGraph implements Graph
     /**
      * @inheritdoc
      */
-    public function contains($node)
+    public function contains($node):bool
     {
         return in_array($node,$this->nodes);
     }
 
     /**
-     * @param $nodeId
-     * @return bool
+     * @inheritdoc
      */
-    public function containsNodeId($nodeId)
+    public function containsNodeId($nodeId):bool
     {
         return isset($this->nodes[$nodeId]);
     }
