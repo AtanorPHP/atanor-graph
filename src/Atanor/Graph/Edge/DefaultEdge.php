@@ -2,7 +2,8 @@
 declare(strict_types=1);
 namespace Atanor\Graph\Edge;
 
-class DefaultEdge implements Edge, MutableEdge
+
+class DefaultEdge implements Edge
 {
     /**
      * Ends storage
@@ -25,7 +26,7 @@ class DefaultEdge implements Edge, MutableEdge
      */
     public function __construct(&$node1,&$node2)
     {
-        $this->setEnds($node1,$node2);
+        $this->ends = \SplFixedArray::fromArray([$node1,$node2]);
     }
 
     /**
@@ -37,22 +38,5 @@ class DefaultEdge implements Edge, MutableEdge
             if ($end === $node) return true;
         }
         return false;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function setEnds(&$node1,&$node2):MutableEdge
-    {
-        $this->ends = \SplFixedArray::fromArray([$node1,$node2]);
-        return $this;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function setOptions($options):MutableEdge
-    {
-        return $this;
     }
 }

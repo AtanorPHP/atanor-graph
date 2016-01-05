@@ -1,0 +1,13 @@
+{
+    "name": "atanor/graph",
+    "description": "Graph data structure",
+    "type": "library",
+    "authors": [
+        {
+            "name": "sophpie",
+            "email": "sop.beaupuis@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
